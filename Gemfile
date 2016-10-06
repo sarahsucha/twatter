@@ -32,6 +32,8 @@ gem 'jbuilder', '~> 2.5'
 
 group :development, :test do
   gem 'rails-controller-testing'
+  gem 'nokogiri', '~> 1.6', '>= 1.6.8.1'
+  gem 'rspec-html-matchers', '~> 0.8.1'
   gem 'rspec-rails'
   gem 'capybara', "~> 2.5"
   gem 'launchy'

@@ -12,6 +12,7 @@ describe TwatPagesController do
       get :home
       expect(response).to render_template(:home)
     end
+
   end
 
   describe "GET #help" do
@@ -35,6 +36,18 @@ describe TwatPagesController do
     it "renders the :about template" do
       get :about
       expect(response).to render_template(:about)
+    end
+  end
+
+  describe "GET #contact" do
+    it "responds with status code 200" do
+      get :contact
+      expect(response).to have_http_status 200
+    end
+
+    it "renders the :contact template" do
+      get :contact
+      expect(response).to render_template(:contact)
     end
   end
 
