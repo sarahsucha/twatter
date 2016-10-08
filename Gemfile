@@ -29,11 +29,10 @@ gem 'jbuilder', '~> 2.5'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+gem 'bootstrap-sass', '~> 3.3.6'
 
 group :development, :test do
   gem 'rails-controller-testing'
-  gem 'nokogiri', '~> 1.6', '>= 1.6.8.1'
-  gem 'rspec-html-matchers', '~> 0.8.1'
   gem 'rspec-rails'
   gem 'capybara', "~> 2.5"
   gem 'launchy'
