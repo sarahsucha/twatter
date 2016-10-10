@@ -65,4 +65,17 @@ RSpec.describe User, type: :model do
     end
   end
 
+  describe "#password" do
+    it "should be present" do
+      user.password = ""
+      user.password_confirmation = ""
+      expect(user).to_not be_valid
+    end
+    it "should have a minimum length" do
+      user.password = "aaaaa"
+      user.password_confirmation = "aaaaa"
+      expect(user).to_not be_valid
+    end
+  end
+
 end
