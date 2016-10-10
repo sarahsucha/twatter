@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  let(:user) { User.new(name: "Example User", email: "user@example.com") }
+  let(:user) { User.new(name: "Example User", email: "user@example.com", password: "foobar", password_confirmation: "foobar") }
 
   describe "User has readable attributes" do
     it "name" do
@@ -14,23 +14,17 @@ RSpec.describe User, type: :model do
 
   describe "#email" do
     it "should not be valid when not filled in" do
-      record = User.new
-      record.email = ' ' #invalid state
-      record.name = 'Example User'
-      expect(record).to_not be_valid
+      user.email = ' ' #invalid state
+      expect(user).to_not be_valid
       # expect(record.errors[:email]).to eq(["can't be blank"])
     end
     it "should be valid when filled in" do
-      record = User.new
-      record.email = "user@example.com" #valid state
-      record.name = 'Example User'
-      expect(record).to be_valid
+      user.email = "user@example.com" #valid state
+      expect(user).to be_valid
     end
     it "should not be too long" do
-      record = User.new
-      record.email = "a" * 250 + "@example.com" #invalid state
-      record.name = 'Example User'
-      expect(record).to_not be_valid
+      user.email = "a" * 250 + "@example.com" #invalid state
+      expect(user).to_not be_valid
     end
     it "should accept valid email formats" do
       valid_addresses = ["user@example.com", "USER@foo.C", "first.last@foo.jp", "alice+bob@baz.cn"]
@@ -57,23 +51,17 @@ RSpec.describe User, type: :model do
 
   describe "#name" do
     it "should not be valid when not filled in" do
-      record = User.new
-      record.name = ' ' #invalid state
-      record.email = "user@example.com"
-      expect(record).to_not be_valid
-      expect(record.errors[:name]).to eq(["can't be blank"])
+      user.name = ' ' #invalid state
+      expect(user).to_not be_valid
+      expect(user.errors[:name]).to eq(["can't be blank"])
     end
     it "should be valid when filled in" do
-      record = User.new
-      record.name = "Example User" #valid state
-      record.email = "user@example.com"
-      expect(record).to be_valid
+      user.name = "Example User" #valid state
+      expect(user).to be_valid
     end
     it "should not be too long" do
-      record = User.new
-      record.name = "a" * 51
-      record.email = "user@example.com"
-      expect(record).to_not be_valid
+      user.name = "a" * 51
+      expect(user).to_not be_valid
     end
   end
 
